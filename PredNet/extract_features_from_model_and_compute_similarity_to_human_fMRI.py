@@ -29,8 +29,6 @@ if len(sys.argv) > 2:
 else:
     weights_file = os.path.join(MODEL_DIR, 'prednet_kitti_weights.hdf5')
 json_file = os.path.join(MODEL_DIR, 'prednet_kitti_model.json')
-test_file = os.path.join(DATA_DIR, 'X_test.hkl')
-test_sources = os.path.join(DATA_DIR, 'sources_test.hkl')
 print weights_file
 with open(MODEL_DIR + 'hyperparameters.json', 'r') as f:
     params = json.load(f)
@@ -52,6 +50,7 @@ for i in range(0,layers):
 #    layer_list.append('Ahat' + str(i))
 #    layer_list.append('A' + str(i))
 #    layer_list.append('E' + str(i))
+
 X_test = hkl.load(os.path.join('stimuli_test_data.hkl'))
 X_test = np.rollaxis(X_test, 3, 2)
 X_test = np.rollaxis(X_test, 4, 3)
